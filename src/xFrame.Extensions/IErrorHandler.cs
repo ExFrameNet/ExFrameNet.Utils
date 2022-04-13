@@ -4,6 +4,6 @@ namespace xFrame.Extensions
 {
     public interface IErrorHandler
     {
-        void HandleException(Exception ex)
+        void HandleException(Exception ex);
     }
 }
