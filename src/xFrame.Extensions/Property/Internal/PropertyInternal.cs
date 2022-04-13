@@ -5,18 +5,26 @@ using xFrame.Extensions.System;
 namespace xFrame.Extensions.Property.Internal
 {
     internal class PropertyInternal<T, TProperty> : IProperty<T, TProperty>
+        where T : class
     {
         public string Name { get; }
         public T ClassInstance { get; }
         public TProperty Value => PropertyReader(ClassInstance);
-        public Func<T,TProperty> PropertyReader { get; }
+        Func<T, TProperty> IProperty<T, TProperty>.PropertyReader => PropertyReader;
+
+        internal Func<T, TProperty> PropertyReader { get; }
 
 
-        public PropertyInternal(T classInstance, Expression<Func<T,TProperty>> propertySelector)
+        public PropertyInternal(T classInstance, Expression<Func<T, TProperty>> propertySelector)
+            : this(classInstance, propertySelector.GetPropertyName(), propertySelector.Compile())
+        {
+        }
+
+        public PropertyInternal(T classInstance, string propertyName, Func<T, TProperty> propertyReader)
         {
             ClassInstance = classInstance;
-            Name = propertySelector.GetPropertyName();
-            PropertyReader = propertySelector.Compile();
+            Name = propertyName;
+            PropertyReader = propertyReader;
         }
     }
 }
