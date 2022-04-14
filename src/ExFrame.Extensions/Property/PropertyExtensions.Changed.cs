@@ -3,15 +3,15 @@ using System.ComponentModel;
 
 namespace ExFrame.Extensions.Property
 {
-    public static class IPropertyExtensions
+    public static partial class PropertyExtensions
     {
-        public static PropertyChanged<T, TProperty> Changed<T, TProperty>(this Property<T, TProperty> property)
+        public static PropertyChangedContext<T, TProperty> OnChange<T, TProperty>(this PropertyContext<T, TProperty> property)
             where T : class, INotifyPropertyChanged
         {
-            return new PropertyChanged<T, TProperty>(property);
+            return new PropertyChangedContext<T, TProperty>(property);
         }
 
-        public static PropertyChanged<T, TProperty> Subscribe<T, TProperty>(this PropertyChanged<T, TProperty> property, Action<TProperty> callBack)
+        public static PropertyChangedContext<T, TProperty> Subscribe<T, TProperty>(this PropertyChangedContext<T, TProperty> property, Action<TProperty> callBack)
             where T : class, INotifyPropertyChanged
         {
             property.ClassInstance.PropertyChanged += (s, e) =>

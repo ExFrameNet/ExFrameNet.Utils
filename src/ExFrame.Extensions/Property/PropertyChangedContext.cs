@@ -4,20 +4,20 @@ using System.Linq.Expressions;
 
 namespace ExFrame.Extensions.Property
 {
-    public class PropertyChanged<T, TProperty> : Property<T, TProperty>
+    public class PropertyChangedContext<T, TProperty> : PropertyContext<T, TProperty>
         where T : class, INotifyPropertyChanged
     {
-        internal PropertyChanged(T classInstance, string propertyName, Func<T, TProperty> propertyReader) 
+        internal PropertyChangedContext(T classInstance, string propertyName, Func<T, TProperty> propertyReader) 
             : base(classInstance, propertyName, propertyReader)
         {
         }
 
-        internal PropertyChanged(T classInstance, Expression<Func<T, TProperty>> propertySelector)
+        internal PropertyChangedContext(T classInstance, Expression<Func<T, TProperty>> propertySelector)
             : base(classInstance, propertySelector)
         {
         }
 
-        internal PropertyChanged(Property<T,TProperty> property)
+        internal PropertyChangedContext(PropertyContext<T,TProperty> property)
             : base(property)
         {
 

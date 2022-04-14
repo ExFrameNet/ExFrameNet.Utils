@@ -25,6 +25,20 @@ namespace ExFrame.Extensions.Tests.Mocks
             }
         }
 
+        private object _data;
+        public object Data
+        {
+            get => _data;
+            set
+            {
+                if (_data == value)
+                    return;
+
+                _data = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool Changed { get; private set; } = false;
 
 

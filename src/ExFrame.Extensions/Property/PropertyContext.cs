@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace ExFrame.Extensions.Property
 {
-    public class Property<T, TProperty>
+    public class PropertyContext<T, TProperty>
         where T : class
     {
         public string Name { get; }
@@ -12,19 +12,19 @@ namespace ExFrame.Extensions.Property
         public TProperty Value => PropertyReader(ClassInstance);
         internal Func<T, TProperty> PropertyReader { get; }
 
-        internal Property(T classInstance, Expression<Func<T, TProperty>> propertySelector)
+        internal PropertyContext(T classInstance, Expression<Func<T, TProperty>> propertySelector)
             : this(classInstance, propertySelector.GetPropertyName(), propertySelector.Compile())
         {
         }
 
-        internal Property(T classInstance, string propertyName, Func<T, TProperty> propertyReader)
+        internal PropertyContext(T classInstance, string propertyName, Func<T, TProperty> propertyReader)
         {
             ClassInstance = classInstance;
             Name = propertyName;
             PropertyReader = propertyReader;
         }
 
-        internal Property(Property<T,TProperty> property)
+        internal PropertyContext(PropertyContext<T,TProperty> property)
         {
             Name = property.Name;
             ClassInstance = property.ClassInstance;
