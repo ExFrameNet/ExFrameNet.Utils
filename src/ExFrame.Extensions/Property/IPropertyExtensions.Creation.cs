@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
-using exFrame.Extensions.Property.Internal;
+using ExFrame.Extensions.Property.Internal;
 
-namespace exFrame.Extensions.Property
+namespace ExFrame.Extensions.Property
 {
     public static partial class PropertyExtensions
     {

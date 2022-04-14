@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace exFrame.Extensions.System
+namespace ExFrame.Extensions.System
 {
     public static class INotifyPropertyChangedExtensions
     {

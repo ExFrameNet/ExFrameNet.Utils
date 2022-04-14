@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace exFrame.Extensions.System
+namespace ExFrame.Extensions.System
 {
     public static class ExpressionExtensions
     {

@@ -1,9 +1,9 @@
-using exFrame.Extensions.Tests.Mocks;
+using ExFrame.Extensions.Tests.Mocks;
 using Xunit;
 using FluentAssertions;
-using exFrame.Extensions.Property;
+using ExFrame.Extensions.Property;
 
-namespace exFrame.Extensions.Tests
+namespace ExFrame.Extensions.Tests
 {
     public class PropertyExtensionTests
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace exFrame.Extensions.Property
+namespace ExFrame.Extensions.Property
 {
     public interface IPropertyChanged<T, TProperty> : IProperty<T, TProperty>
         where T : class, INotifyPropertyChanged
