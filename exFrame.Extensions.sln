@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xFrame.Extensions", "src\xFrame.Extensions\xFrame.Extensions.csproj", "{CA47FD5E-2BF7-452C-B940-AEB9ED07A7BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exFrame.Extensions", "src\xFrame.Extensions\exFrame.Extensions.csproj", "{CA47FD5E-2BF7-452C-B940-AEB9ED07A7BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xFrame.Extensions.Tests", "src\xFrame.Extensions.Tests\xFrame.Extensions.Tests.csproj", "{6D1D9F65-0E1B-4CCC-9A37-3884D9BD9B6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exFrame.Extensions.Tests", "src\xFrame.Extensions.Tests\exFrame.Extensions.Tests.csproj", "{6D1D9F65-0E1B-4CCC-9A37-3884D9BD9B6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

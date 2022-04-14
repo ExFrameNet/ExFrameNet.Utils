@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace xFrame.Extensions.Property
+namespace exFrame.Extensions.Property
 {
     public interface IProperty<T, TProperty>
         where T : class
@@ -8,6 +8,6 @@ namespace xFrame.Extensions.Property
         string Name { get; }
         T ClassInstance { get; }
         TProperty Value { get; }
-        internal Func<T,TProperty> PropertyReader { get; }
+        internal Func<T, TProperty> PropertyReader { get; }
     }
 }

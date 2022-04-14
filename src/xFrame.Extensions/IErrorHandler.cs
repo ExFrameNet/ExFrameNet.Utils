@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace xFrame.Extensions
+namespace exFrame.Extensions
 {
     public interface IErrorHandler
     {

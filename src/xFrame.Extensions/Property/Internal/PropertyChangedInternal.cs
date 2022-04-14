@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace xFrame.Extensions.Property.Internal
+namespace exFrame.Extensions.Property.Internal
 {
     internal class PropertyChangedInternal<T, TProperty> : PropertyInternal<T, TProperty>, IPropertyChanged<T, TProperty>
         where T : class, INotifyPropertyChanged
@@ -11,8 +11,8 @@ namespace xFrame.Extensions.Property.Internal
         {
         }
 
-        public PropertyChangedInternal(IProperty<T,TProperty> property) 
-            : base(property.ClassInstance, property.Name ,property.PropertyReader)
+        public PropertyChangedInternal(IProperty<T, TProperty> property)
+            : base(property.ClassInstance, property.Name, property.PropertyReader)
         {
 
         }

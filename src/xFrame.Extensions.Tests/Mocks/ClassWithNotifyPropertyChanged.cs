@@ -4,14 +4,14 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace xFrame.Extensions.Tests.Mocks
+namespace exFrame.Extensions.Tests.Mocks
 {
     internal class ClassWithNotifyPropertyChanged : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _name;
-        public string Name 
+        public string Name
         {
             get => _name;
             set

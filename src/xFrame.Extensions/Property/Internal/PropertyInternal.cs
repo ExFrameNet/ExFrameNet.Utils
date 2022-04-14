@@ -1,8 +1,9 @@
-﻿using System;
+﻿using exFrame.Extensions.Property;
+using exFrame.Extensions.System;
+using System;
 using System.Linq.Expressions;
-using xFrame.Extensions.System;
 
-namespace xFrame.Extensions.Property.Internal
+namespace exFrame.Extensions.Property.Internal
 {
     internal class PropertyInternal<T, TProperty> : IProperty<T, TProperty>
         where T : class

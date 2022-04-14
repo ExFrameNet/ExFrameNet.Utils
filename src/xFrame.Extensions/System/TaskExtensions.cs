@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace xFrame.Extensions.System
+namespace exFrame.Extensions.System
 {
     public static class TaskExtensions
     {
