@@ -9,7 +9,7 @@ namespace ExFrame.Extensions.Property
     public class AsyncPropertyChangedContext<T,TProperty> : PropertyContext<T, TProperty>
         where T : class, INotifyPropertyChanged
     {
-        internal List<Func<T, TProperty, Task>> ChangedActions = new();
+        internal List<Func<T, TProperty, Task>> ChangedActions = new List<Func<T, TProperty, Task>>();
 
         internal AsyncPropertyChangedContext(T classInstance, Expression<Func<T, TProperty>> propertySelector)
             : base(classInstance, propertySelector)

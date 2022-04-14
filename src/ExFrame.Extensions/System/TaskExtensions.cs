@@ -5,7 +5,7 @@ namespace ExFrame.Extensions.System
 {
     public static class TaskExtensions
     {
-        public static async void Await(this Task task, IErrorHandler errorHandler = null)
+        public static async void Await(this Task task, IErrorHandler? errorHandler = null)
 
         {
             try
@@ -18,7 +18,7 @@ namespace ExFrame.Extensions.System
             }
         }
 
-        public static async void Await(this Task task, Action completedCallBack, IErrorHandler errorHandler = null)
+        public static async void Await(this Task task, Action completedCallBack, IErrorHandler? errorHandler = null)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace ExFrame.Extensions.System
             }
         }
 
-        public static async void Await<T>(this Task<T> task, Action<T> completedCallBack, IErrorHandler errorHandler = null)
+        public static async void Await<T>(this Task<T> task, Action<T> completedCallBack, IErrorHandler? errorHandler = null)
         {
             try
             {
