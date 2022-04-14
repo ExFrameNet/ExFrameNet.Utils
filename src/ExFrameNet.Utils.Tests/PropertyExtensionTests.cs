@@ -1,13 +1,9 @@
-using ExFrame.Extensions.Tests.Mocks;
+using ExFrameNet.Utils.Tests.Mocks;
 using Xunit;
 using FluentAssertions;
 using ExFrame.Extensions.Property;
-using System;
-using System.Globalization;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
-namespace ExFrame.Extensions.Tests
+namespace ExFrameNet.Utils.Tests
 {
     public class PropertyExtensionTests
     {

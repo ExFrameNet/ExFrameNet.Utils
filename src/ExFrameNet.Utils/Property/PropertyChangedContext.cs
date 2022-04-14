@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace ExFrame.Extensions.Property
+namespace ExFrameNet.Utils.Property
 {
     public class PropertyChangedContext<T, TProperty> : PropertyContext<T, TProperty>
         where T : class, INotifyPropertyChanged
@@ -15,7 +15,7 @@ namespace ExFrame.Extensions.Property
         {
         }
 
-        internal PropertyChangedContext(PropertyContext<T,TProperty> property)
+        internal PropertyChangedContext(PropertyContext<T, TProperty> property)
             : base(property)
         {
 

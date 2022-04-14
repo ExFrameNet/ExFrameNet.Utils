@@ -1,8 +1,8 @@
-﻿using ExFrame.Extensions.System;
+﻿using ExFrameNet.Utils.System;
 using System;
 using System.Linq.Expressions;
 
-namespace ExFrame.Extensions.Property
+namespace ExFrameNet.Utils.Property
 {
     public class PropertyContext<T, TProperty>
         where T : class
@@ -24,7 +24,7 @@ namespace ExFrame.Extensions.Property
             PropertyReader = propertyReader;
         }
 
-        internal PropertyContext(PropertyContext<T,TProperty> property)
+        internal PropertyContext(PropertyContext<T, TProperty> property)
         {
             Name = property.Name;
             ClassInstance = property.ClassInstance;
