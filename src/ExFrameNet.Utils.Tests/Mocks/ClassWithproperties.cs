@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ExFrame.Extensions.Tests.Mocks
+namespace ExFrameNet.Utils.Tests.Mocks
 {
     internal class ClassWithproperties
     {

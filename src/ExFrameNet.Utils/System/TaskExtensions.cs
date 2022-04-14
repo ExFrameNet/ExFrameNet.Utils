@@ -1,7 +1,8 @@
-﻿using System;
+﻿using ExFrameNet.Utils;
+using System;
 using System.Threading.Tasks;
 
-namespace ExFrame.Extensions.System
+namespace ExFrameNet.Utils.System
 {
     public static class TaskExtensions
     {

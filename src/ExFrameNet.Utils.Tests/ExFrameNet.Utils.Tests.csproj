@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExFrame.Extensions\ExFrame.Extensions.csproj" />
+    <ProjectReference Include="..\ExFrameNet.Utils\ExFrameNet.Utils.csproj" />
   </ItemGroup>
 
 </Project>

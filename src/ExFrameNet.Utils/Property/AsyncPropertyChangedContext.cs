@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace ExFrame.Extensions.Property
+namespace ExFrameNet.Utils.Property
 {
-    public class AsyncPropertyChangedContext<T,TProperty> : PropertyContext<T, TProperty>
+    public class AsyncPropertyChangedContext<T, TProperty> : PropertyContext<T, TProperty>
         where T : class, INotifyPropertyChanged
     {
         internal List<Func<T, TProperty, Task>> ChangedActions = new List<Func<T, TProperty, Task>>();

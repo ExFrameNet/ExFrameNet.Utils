@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace ExFrame.Extensions.Tests.Mocks
+namespace ExFrameNet.Utils.Tests.Mocks
 {
     internal class ClassWithNotifyPropertyChanged : INotifyPropertyChanged
     {

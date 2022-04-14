@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExFrameNet.Utils.Property;
+using System;
 using System.Linq.Expressions;
 
 namespace ExFrame.Extensions.Property

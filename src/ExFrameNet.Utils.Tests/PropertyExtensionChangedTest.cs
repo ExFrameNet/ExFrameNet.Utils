@@ -1,10 +1,9 @@
-﻿using System;
-using ExFrame.Extensions.Tests.Mocks;
+﻿using ExFrameNet.Utils.Tests.Mocks;
 using Xunit;
 using FluentAssertions;
 using ExFrame.Extensions.Property;
 
-namespace ExFrame.Extensions.Tests
+namespace ExFrameNet.Utils.Tests
 {
     public class PropertyExtensionChangedTest
     {
