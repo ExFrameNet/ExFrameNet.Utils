@@ -8,6 +8,7 @@ namespace ExFrame.Extensions.Tests.Mocks
 {
     internal class ClassWithNotifyPropertyChanged : INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _name;
@@ -24,6 +25,8 @@ namespace ExFrame.Extensions.Tests.Mocks
             }
         }
 
+        public bool Changed { get; private set; } = false;
+
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -33,7 +36,7 @@ namespace ExFrame.Extensions.Tests.Mocks
 
         public void CalledWhenChanged(string name)
         {
-
+            Changed = true;
         }
     }
 }
