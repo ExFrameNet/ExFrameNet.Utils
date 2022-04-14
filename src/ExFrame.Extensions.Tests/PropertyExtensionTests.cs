@@ -2,6 +2,10 @@ using ExFrame.Extensions.Tests.Mocks;
 using Xunit;
 using FluentAssertions;
 using ExFrame.Extensions.Property;
+using System;
+using System.Globalization;
+using System.Collections.Generic;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace ExFrame.Extensions.Tests
 {
@@ -18,6 +22,23 @@ namespace ExFrame.Extensions.Tests
             sut.Name.Should().Be(nameof(propClass.StringProperty));
             sut.ClassInstance.Should().BeSameAs(propClass);
             sut.Value.Should().Be(propClass.StringProperty);
+        }
+
+        [Fact]
+        public void PropertyExtension_Transform()
+        {
+            //Arrange
+            var propClass = new ClassWithproperties()
+            {
+                StringProperty = "15"
+            };
+
+            //Act
+            var sut = propClass.Property(x => x.StringProperty)
+                .Transform(x => int.Parse(x));
+            //Assert
+            sut.Value.Should().Be(15);
+            sut.Value.Should().BeOfType(typeof(int));
         }
     }
 }

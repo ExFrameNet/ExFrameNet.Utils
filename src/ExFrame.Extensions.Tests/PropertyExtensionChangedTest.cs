@@ -12,15 +12,15 @@ namespace ExFrame.Extensions.Tests
         [Fact]
         public void PropertyExtension_Changed_Subscribe_Executes_OnPropewrtyChanged()
         {
-            Action<string> act = x => x.Should().Be("");
             //Arrange 
             var notifyClass = new ClassWithNotifyPropertyChanged();
             // Act
             var sut = notifyClass.Property(x => x.Name)
-                    .Changed()
-                    .Subscribe(act);
-
+                    .OnChange()
+                    .Subscribe(notifyClass.CalledWhenChanged);
+            notifyClass.Name = "TestName";
             // Assert
+            notifyClass.Changed.Should().Be(true);
         }
     }
 }
