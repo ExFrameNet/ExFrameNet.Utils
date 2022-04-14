@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq.Expressions;
 
@@ -7,10 +8,7 @@ namespace ExFrame.Extensions.Property
     public class PropertyChangedContext<T, TProperty> : PropertyContext<T, TProperty>
         where T : class, INotifyPropertyChanged
     {
-        internal PropertyChangedContext(T classInstance, string propertyName, Func<T, TProperty> propertyReader) 
-            : base(classInstance, propertyName, propertyReader)
-        {
-        }
+        internal List<Action<T, TProperty>> ChangedActions = new();
 
         internal PropertyChangedContext(T classInstance, Expression<Func<T, TProperty>> propertySelector)
             : base(classInstance, propertySelector)

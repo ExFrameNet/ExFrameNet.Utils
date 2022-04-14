@@ -24,38 +24,21 @@ namespace ExFrame.Extensions.Tests
             sut.Value.Should().Be(propClass.StringProperty);
         }
 
-        [Theory]
-        [MemberData(nameof(Data))]
-        public void PropertyExtension_Transform(Func<object, object> transformer, object data, object expected)
+        [Fact]
+        public void PropertyExtension_Transform()
         {
             //Arrange
-            var propClass = new ClassWithNotifyPropertyChanged();
-            object result = 0;
+            var propClass = new ClassWithproperties()
+            {
+                StringProperty = "15"
+            };
+
             //Act
-            var sut = propClass.Property(x => x.Data)
-                    .Transform(transformer)
-                    .OnChange()
-                    .Subscribe(x => result = x);
-            propClass.Data = data;
+            var sut = propClass.Property(x => x.StringProperty)
+                .Transform(x => int.Parse(x));
             //Assert
-            result.Should().Be(expected);
-        }
-
-
-        public static IEnumerable<object[]> Data()
-        {
-            yield return new object[]
-            {
-                (Func<object,object>)(x => int.Parse((string)x)),
-                "15",
-                15
-            };
-            yield return new object[]
-            {
-                (Func<object, object>)(x => double.Parse((string)x, CultureInfo.GetCultureInfo("en-US"))),
-                "3.1415",
-                3.1415
-            };
+            sut.Value.Should().Be(15);
+            sut.Value.Should().BeOfType(typeof(int));
         }
     }
 }
