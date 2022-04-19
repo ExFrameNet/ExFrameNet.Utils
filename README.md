@@ -16,8 +16,8 @@ propertyselector. The Context than you get back provides information for the pro
 The Property context is used to provide easy extensibale functions to class properties such as transformations or action execution if the property has changed.
 
 ```cs
-this.Property(x => x.numerAsString)
-	.Transform( x => int.Parse(x))
-	.OnChange()
+this.Property(x => x.numberAsString)
+	.Changed()
+	.Transform(x => int.Parse(x))
 	.Subscribe(x => Console.WriteLine(x))
 ```
