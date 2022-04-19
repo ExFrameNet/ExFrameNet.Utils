@@ -6,7 +6,7 @@ namespace ExFrameNet.Utils.System
 {
     public static class INotifyPropertyChangedExtensions
     {
-        public static void SubscribePropertyChanged<T, TProperty>(this T notifier, Expression<Func<T, TProperty>> propertyExpression, Action<TProperty> callback)
+        public static void Subscribe<T, TProperty>(this T notifier, Expression<Func<T, TProperty>> propertyExpression, Action<TProperty> callback)
             where T : INotifyPropertyChanged
         {
             var name = propertyExpression.GetPropertyName();

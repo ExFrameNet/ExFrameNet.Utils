@@ -1,5 +1,6 @@
 ﻿using ExFrameNet.Utils.Property;
 using System;
+using System.ComponentModel;
 using System.Linq.Expressions;
 
 namespace ExFrame.Extensions.Property
@@ -15,6 +16,14 @@ namespace ExFrame.Extensions.Property
         {
             TTo reader(T x) => transformer(ctx.PropertyReader(x));
             return new PropertyContext<T, TTo>(ctx.ClassInstance, ctx.Name, reader);
+        }
+
+
+        public static PropertyChangedContext<T, TTo> Transform<T, TProperty, TTo>(this PropertyChangedContext<T, TProperty> ctx, Func<TProperty, TTo> transformer)
+            where T : class, INotifyPropertyChanged
+        {
+            TTo reader(T x) => transformer(ctx.PropertyReader(x));
+            return new PropertyChangedContext<T, TTo>(ctx.ClassInstance, ctx.Name, reader);
         }
     }
 }

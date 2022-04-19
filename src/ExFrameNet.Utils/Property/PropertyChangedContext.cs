@@ -15,6 +15,11 @@ namespace ExFrameNet.Utils.Property
         {
         }
 
+        internal PropertyChangedContext(T classInstance, string propertyName, Func<T, TProperty> propertyReader)
+            : base(classInstance, propertyName, propertyReader)
+        {
+        }
+
         internal PropertyChangedContext(PropertyContext<T, TProperty> property)
             : base(property)
         {

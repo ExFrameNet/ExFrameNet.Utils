@@ -9,7 +9,7 @@ namespace ExFrame.Extensions.Property
 {
     public static partial class PropertyExtensions
     {
-        public static PropertyChangedContext<T, TProperty> OnChange<T, TProperty>(this PropertyContext<T, TProperty> ctx)
+        public static PropertyChangedContext<T, TProperty> Changed<T, TProperty>(this PropertyContext<T, TProperty> ctx)
             where T : class, INotifyPropertyChanged
         {
             var newCtx =  new PropertyChangedContext<T, TProperty>(ctx);

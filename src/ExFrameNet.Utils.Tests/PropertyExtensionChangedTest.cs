@@ -15,7 +15,7 @@ namespace ExFrameNet.Utils.Tests
             var notifyClass = new ClassWithNotifyPropertyChanged();
             // Act
             var sut = notifyClass.Property(x => x.Name)
-                    .OnChange()
+                    .Changed()
                     .Subscribe(notifyClass.CalledWhenChanged);
             notifyClass.Name = "TestName";
             // Assert
