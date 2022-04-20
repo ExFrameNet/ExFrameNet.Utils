@@ -25,5 +25,11 @@ namespace ExFrameNet.Utils.Property
         {
 
         }
+
+        public PropertyChangedContext(PropertyChangedContext<T,TProperty> ctx)
+            : base(ctx)
+        {
+            ChangedActions = ctx.ChangedActions;
+        }
     }
 }
