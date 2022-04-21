@@ -1,7 +1,7 @@
 ﻿using ExFrameNet.Utils.Tests.Mocks;
 using Xunit;
 using FluentAssertions;
-using ExFrame.Extensions.Property;
+using ExFrameNet.Utils.Property;
 
 namespace ExFrameNet.Utils.Tests
 {

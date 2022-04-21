@@ -1,12 +1,9 @@
-﻿using ExFrameNet.Utils.Property;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace ExFrame.Extensions.Property
+namespace ExFrameNet.Utils.Property
 {
     public static partial class PropertyExtensions
     {

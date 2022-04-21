@@ -1,9 +1,8 @@
-﻿using ExFrameNet.Utils.Property;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace ExFrame.Extensions.Property
+namespace ExFrameNet.Utils.Property
 {
     public static partial class PropertyExtensions
     {
@@ -11,7 +10,7 @@ namespace ExFrame.Extensions.Property
             where T : class
             => new PropertyContext<T, TProperty>(classInstance, propertySelector);
 
-        public static PropertyContext<T,TTo> Transform<T,TProperty,TTo>(this PropertyContext<T,TProperty> ctx, Func<TProperty, TTo> transformer)
+        public static PropertyContext<T, TTo> Transform<T, TProperty, TTo>(this PropertyContext<T, TProperty> ctx, Func<TProperty, TTo> transformer)
             where T : class
         {
             TTo reader(T x) => transformer(ctx.PropertyReader(x));
