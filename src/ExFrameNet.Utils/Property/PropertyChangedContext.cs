@@ -1,35 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace ExFrameNet.Utils.Property
+namespace ExFrameNet.Utils.Property;
+
+public class PropertyChangedContext<T, TProperty> : PropertyContext<T, TProperty>
+    where T : class, INotifyPropertyChanged
 {
-    public class PropertyChangedContext<T, TProperty> : PropertyContext<T, TProperty>
-        where T : class, INotifyPropertyChanged
+    internal List<Action<T, TProperty>> _changedActions = new();
+
+    internal PropertyChangedContext(T classInstance, Expression<Func<T, TProperty>> propertySelector)
+        : base(classInstance, propertySelector)
     {
-        internal List<Action<T, TProperty>> ChangedActions = new List<Action<T, TProperty>>();
+    }
 
-        internal PropertyChangedContext(T classInstance, Expression<Func<T, TProperty>> propertySelector)
-            : base(classInstance, propertySelector)
-        {
-        }
+    internal PropertyChangedContext(T classInstance, string propertyName, Func<T, TProperty> propertyReader)
+        : base(classInstance, propertyName, propertyReader)
+    {
+    }
 
-        internal PropertyChangedContext(T classInstance, string propertyName, Func<T, TProperty> propertyReader)
-            : base(classInstance, propertyName, propertyReader)
-        {
-        }
+    internal PropertyChangedContext(PropertyContext<T, TProperty> property)
+        : base(property)
+    {
 
-        internal PropertyChangedContext(PropertyContext<T, TProperty> property)
-            : base(property)
-        {
+    }
 
-        }
-
-        public PropertyChangedContext(PropertyChangedContext<T,TProperty> ctx)
-            : base(ctx)
-        {
-            ChangedActions = ctx.ChangedActions;
-        }
+    public PropertyChangedContext(PropertyChangedContext<T, TProperty> ctx)
+        : base(ctx)
+    {
+        _changedActions = ctx._changedActions;
     }
 }

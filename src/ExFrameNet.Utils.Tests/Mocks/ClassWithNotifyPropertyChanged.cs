@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace ExFrameNet.Utils.Tests.Mocks
 {
@@ -18,7 +15,9 @@ namespace ExFrameNet.Utils.Tests.Mocks
             set
             {
                 if (_name == value)
+                {
                     return;
+                }
 
                 _name = value;
                 OnPropertyChanged();
@@ -32,7 +31,9 @@ namespace ExFrameNet.Utils.Tests.Mocks
             set
             {
                 if (_data == value)
+                {
                     return;
+                }
 
                 _data = value;
                 OnPropertyChanged();

@@ -1,9 +1,14 @@
-﻿using System;
+﻿namespace ExFrameNet.Utils;
 
-namespace ExFrameNet.Utils
+/// <summary>
+/// Interface for errorhandling used by several async actions
+/// </summary>
+public interface IErrorHandler
 {
-    public interface IErrorHandler
-    {
-        void HandleException(Exception ex);
-    }
+
+    /// <summary>
+    /// Called when an error occurred
+    /// </summary>
+    /// <param name="ex">The exception that is occured</param>
+    void HandleException(Exception ex);
 }

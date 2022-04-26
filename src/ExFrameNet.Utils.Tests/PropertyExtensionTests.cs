@@ -1,40 +1,39 @@
-using ExFrameNet.Utils.Tests.Mocks;
-using Xunit;
-using FluentAssertions;
 using ExFrameNet.Utils.Property;
+using ExFrameNet.Utils.Tests.Mocks;
+using FluentAssertions;
+using Xunit;
 
-namespace ExFrameNet.Utils.Tests
+namespace ExFrameNet.Utils.Tests;
+
+public class PropertyExtensionTests
 {
-    public class PropertyExtensionTests
+    [Fact]
+    public void PropertyExtension_Create()
     {
-        [Fact]
-        public void PropertyExtension_Create()
-        {
-            //Arrange 
-            var propClass = new ClassWithproperties();
-            //Act 
-            var sut = propClass.Property(x => x.StringProperty);
-            //Assert
-            sut.Name.Should().Be(nameof(propClass.StringProperty));
-            sut.ClassInstance.Should().BeSameAs(propClass);
-            sut.Value.Should().Be(propClass.StringProperty);
-        }
+        //Arrange 
+        var propClass = new ClassWithproperties();
+        //Act 
+        var sut = propClass.Property(x => x.StringProperty);
+        //Assert
+        sut.Name.Should().Be(nameof(propClass.StringProperty));
+        sut.ClassInstance.Should().BeSameAs(propClass);
+        sut.Value.Should().Be(propClass.StringProperty);
+    }
 
-        [Fact]
-        public void PropertyExtension_Transform()
+    [Fact]
+    public void PropertyExtension_Transform()
+    {
+        //Arrange
+        var propClass = new ClassWithproperties()
         {
-            //Arrange
-            var propClass = new ClassWithproperties()
-            {
-                StringProperty = "15"
-            };
+            StringProperty = "15"
+        };
 
-            //Act
-            var sut = propClass.Property(x => x.StringProperty)
-                .Transform(x => int.Parse(x));
-            //Assert
-            sut.Value.Should().Be(15);
-            sut.Value.Should().BeOfType(typeof(int));
-        }
+        //Act
+        var sut = propClass.Property(x => x.StringProperty)
+            .Transform(x => int.Parse(x));
+        //Assert
+        sut.Value.Should().Be(15);
+        sut.Value.Should().BeOfType(typeof(int));
     }
 }

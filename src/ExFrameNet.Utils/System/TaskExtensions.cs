@@ -1,48 +1,43 @@
-﻿using ExFrameNet.Utils;
-using System;
-using System.Threading.Tasks;
+﻿namespace ExFrameNet.Utils.System;
 
-namespace ExFrameNet.Utils.System
+public static class TaskExtensions
 {
-    public static class TaskExtensions
+    public static async void Await(this Task task, IErrorHandler? errorHandler = null)
+
     {
-        public static async void Await(this Task task, IErrorHandler? errorHandler = null)
-
+        try
         {
-            try
-            {
-                await task;
-            }
-            catch (Exception ex)
-            {
-                errorHandler?.HandleException(ex);
-            }
+            await task;
         }
-
-        public static async void Await(this Task task, Action completedCallBack, IErrorHandler? errorHandler = null)
+        catch (Exception ex)
         {
-            try
-            {
-                await task;
-                completedCallBack?.Invoke();
-            }
-            catch (Exception ex)
-            {
-                errorHandler?.HandleException(ex);
-            }
+            errorHandler?.HandleException(ex);
         }
+    }
 
-        public static async void Await<T>(this Task<T> task, Action<T> completedCallBack, IErrorHandler? errorHandler = null)
+    public static async void Await(this Task task, Action completedCallBack, IErrorHandler? errorHandler = null)
+    {
+        try
         {
-            try
-            {
-                var result = await task;
-                completedCallBack?.Invoke(result);
-            }
-            catch (Exception ex)
-            {
-                errorHandler?.HandleException(ex);
-            }
+            await task;
+            completedCallBack?.Invoke();
+        }
+        catch (Exception ex)
+        {
+            errorHandler?.HandleException(ex);
+        }
+    }
+
+    public static async void Await<T>(this Task<T> task, Action<T> completedCallBack, IErrorHandler? errorHandler = null)
+    {
+        try
+        {
+            var result = await task;
+            completedCallBack?.Invoke(result);
+        }
+        catch (Exception ex)
+        {
+            errorHandler?.HandleException(ex);
         }
     }
 }

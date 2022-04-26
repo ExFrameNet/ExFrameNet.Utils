@@ -1,74 +1,67 @@
-﻿using System;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Reflection;
 
-namespace ExFrameNet.Utils.System
+namespace ExFrameNet.Utils.System;
+
+public static class ExpressionExtensions
 {
-    public static class ExpressionExtensions
+    public static string GetPropertyName<T, TProperty>(this Expression<Func<T, TProperty>> expression)
     {
-        public static string GetPropertyName<T, TProperty>(this Expression<Func<T, TProperty>> expression)
+        var propInfo = expression.GetMember();
+        return propInfo.Name;
+    }
+
+    public static PropertyInfo GetPropertyInfo<T, TProperty>(this Expression<Func<T, TProperty>> expression)
+    {
+        if (expression.Body is not MemberExpression member)
         {
-			var propInfo = expression.GetMember();
-            return propInfo.Name;
+            throw new ArgumentException($"Expression refers to a method");
         }
 
-        public static PropertyInfo GetPropertyInfo<T, TProperty>(this Expression<Func<T, TProperty>> expression)
+        var propInfo = member.Member as PropertyInfo;
+
+        return propInfo ?? throw new ArgumentException("Expression refers to a field");
+    }
+
+    public static MemberInfo GetMember<T, TProperty>(this Expression<Func<T, TProperty>> expression)
+    {
+        if (RemoveUnary(expression.Body) is not MemberExpression memberExp)
         {
-            var member = expression.Body as MemberExpression;
-            if (member == null)
-                throw new ArgumentException($"Expression refers to a method");
-
-            var propInfo = member.Member as PropertyInfo;
-
-            if (propInfo == null)
-                throw new ArgumentException("Expression refers to a field");
-
-            return propInfo;
+            throw new ArgumentException("Expressions refers to a methode");
         }
 
-		public static MemberInfo? GetMember<T, TProperty>(this Expression<Func<T, TProperty>> expression)
-		{
-			var memberExp = RemoveUnary(expression.Body) as MemberExpression;
+        var currentExpr = memberExp.Expression;
 
-			if (memberExp == null)
-			{
-				return null;
-			}
+        if (currentExpr is null)
+        {
+            throw new InvalidOperationException("Expression was null");
+        }
+        
+        while (true)
+        {
+            currentExpr = RemoveUnary(currentExpr!);
 
-			Expression currentExpr = memberExp.Expression;
+            if (currentExpr != null && currentExpr.NodeType == ExpressionType.MemberAccess)
+            {
+                currentExpr = ((MemberExpression)currentExpr).Expression;
+            }
+            else
+            {
+                break;
+            }
+        }
 
-			// Unwind the expression to get the root object that the expression acts upon.
-			while (true)
-			{
-				currentExpr = RemoveUnary(currentExpr);
+        if (currentExpr == null || currentExpr.NodeType != ExpressionType.Parameter)
+        {
+            throw new Exception();
+        }
 
-				if (currentExpr != null && currentExpr.NodeType == ExpressionType.MemberAccess)
-				{
-					currentExpr = ((MemberExpression)currentExpr).Expression;
-				}
-				else
-				{
-					break;
-				}
-			}
+        return memberExp.Member;
+    }
 
-			if (currentExpr == null || currentExpr.NodeType != ExpressionType.Parameter)
-			{
-				return null; // We don't care if we're not acting upon the model instance.
-			}
-
-			return memberExp.Member;
-		}
-
-		private static Expression RemoveUnary(Expression toUnwrap)
-		{
-			if (toUnwrap is UnaryExpression)
-			{
-				return ((UnaryExpression)toUnwrap).Operand;
-			}
-
-			return toUnwrap;
-		}
-	}
+    private static Expression RemoveUnary(Expression toUnwrap)
+    {
+        return toUnwrap is UnaryExpression expression ? expression.Operand : toUnwrap;
+    }
 }
 
