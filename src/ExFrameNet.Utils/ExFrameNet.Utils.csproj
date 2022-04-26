@@ -1,14 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-	  <Nullable>enable</Nullable>
-	  <ImplicitUsings>true</ImplicitUsings>
-	  <Company>ExFrameNet</Company>
-	  <RepositoryUrl>https://github.com/ExFrameNet/ExFrame.Utils</RepositoryUrl>
-	  <PackageLicenseFile>E:\exFrame\Utils\LICENSE</PackageLicenseFile>
-	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>true</ImplicitUsings>
+	</PropertyGroup>
 
+	<PropertyGroup>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Company>ExFrameNet</Company>
+		<RepositoryUrl>https://github.com/ExFrameNet/ExFrame.Utils</RepositoryUrl>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<Copyright>Copyright© Yannick Schrade 2022</Copyright>
+		<Authors>Yannick Schrade</Authors>
+	</PropertyGroup>
 </Project>
+
